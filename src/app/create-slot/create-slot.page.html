@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col (click)="back()" [size]=2 style="display: flex; flex-direction: row; 
+      align-items: center; 
+    justify-content: center;">
+    <ion-icon style="color: white; font-size: 25px;" name="arrow-back-outline"></ion-icon>
+  </ion-col>
+  <ion-col [size]=10 style="display: flex; flex-direction: row; align-items: center; 
+  justify-content: flex-start;" >
+    <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px; 
+    color: white;">Slot</ion-text>
+  </ion-col>
+</ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="slotCreatedBoolean">
+    <div>
+      <ion-row style="padding-top: 5%;width: 100%;justify-content: center;">
+        <ion-text style="font-family: SF-UI-Text-Bold; 
+        font-size: 14px;color: lightgreen;">Slot Bokked Successfully</ion-text>
+      </ion-row>
+
+      <ion-row style="padding: 5%;width: 100%;">
+        <ion-col [size]=6 style="display: flex;flex-direction: column;justify-content: flex-start;align-items: center;">
+          <ion-text style="font-family: SF-UI-Text-Bold; 
+        font-size: 14px;">Start Date</ion-text>
+          <ion-text style="font-family: SF-UI-Text-Bold; 
+        font-size: 14px;">{{startDate}}</ion-text>
+        </ion-col>
+        <ion-col [size]=6 style="display: flex;flex-direction: column;justify-content: flex-end;align-items: center;">
+          <ion-text style="font-family: SF-UI-Text-Bold; 
+        font-size: 14px;">EndDate</ion-text>
+          <ion-text style="font-family: SF-UI-Text-Bold; 
+        font-size: 14px;">{{endDate}}</ion-text>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div>
+      <ion-row style="padding-top: 5%;width: 100%;">
+        <ion-col [size]='3' *ngFor='let item of selectedClinic.slotTimings'>
+          <div class='timeSlot' [class.selected]="item.isBooked">
+            <ion-row style="display: flex;
+            flex-direction: column;
+            align-items: center;">
+              <ion-text style="font-family: SF-UI-Text-Bold; 
+              font-size: 14px;">{{item.starttime}}</ion-text>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-row style="justify-content: center; padding-top: 10%;" (click)="goToAppointment()">
+      <div style="border: 1px solid #1b5a90; width: 90%; display: flex; flex-direction: row; 
+      justify-content: space-evenly; align-items: center; padding: 3%;
+       background: #1b5a90; border-radius: 5px;">
+      <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold; 
+      color: white;" >See Appointments</ion-text>
+    </div>
+  </ion-row>
+
+  </div>
+
+
+<div *ngIf="!slotCreatedBoolean">
+
+  <ion-row>
+    <ion-col *ngFor="let item of clinicArray;let i=index;">
+      <ion-segment selected value={{clinicName}} (ionChange)="segment($event,i)">
+        <ion-segment-button value={{item.clinicName}}>
+          <ion-label style="font-family: SF-UI-Text-Bold; font-size: 14px;
+              padding-left: 5%;">{{item.clinicName}}</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col> 
+  </ion-row>
+
+
+  <ion-row  style="justify-content: center; padding-top: 5%;">
+    <div style="border: 1px solid gray;width: 50%;
+          border-radius: 5px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;">
+            <ion-input type='date' (ionChange)="dateChange()" placeholder="Select Date"
+             
+             [(ngModel)]='selectDate' style="text-align: center;"></ion-input>
+          </div>
+  </ion-row>
+
+<div>
+  <ion-row style="padding-top: 5%;width: 100%;">
+    <ion-col [size]='4' *ngFor='let item of slotTimings,let x=index' (click)="createAppointment(item)">
+      <div  class='timeSlot' [class.selected]="item.isBooked" >
+        <ion-row style="display: flex;
+        flex-direction: column;
+        align-items: center;" (click)="slotSelection(x)">
+          <ion-text style="font-family: SF-UI-Text-Bold; 
+          font-size: 14px;">{{item.starttime}}</ion-text>
+        </ion-row>
+      </div>
+    </ion-col>
+  </ion-row>
+</div>
+
+<div style="padding-top: 5%;width: 100%;" *ngIf='slotTimings.length==0'>
+  <ion-row style="justify-content: center;">
+    <ion-text style="font-family: SF-UI-Text-Bold; 
+    font-size: 14px;">No Slot</ion-text>
+  </ion-row>
+</div>
+
+  <ion-row style="justify-content: center; padding-top: 10%;" (click)="create()">
+        <div style="border: 1px solid #1b5a90; width: 90%; display: flex; flex-direction: row; 
+        justify-content: space-evenly; align-items: center; padding: 3%;
+         background: #1b5a90; border-radius: 5px;">
+        <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold; 
+        color: white;" >Crete New Slot</ion-text>
+      </div>
+    </ion-row>
+
+</div>
+
+</ion-content>

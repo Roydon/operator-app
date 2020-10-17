@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col (click)="back()" [size]=2 style="display: flex; flex-direction: row; align-items: center; 
+    justify-content: center;">
+    <ion-icon name="arrow-back" style="color: white; font-size: 25px;"></ion-icon>
+  </ion-col>
+  <ion-col [size]=10 style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start;" >
+    <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px; color: white;">Profile</ion-text>
+  </ion-col>
+</ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding-top: 5%;">
+    <div>
+      <ion-row>
+        <ion-col [size]=3 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+          <ion-avatar>
+            <img src="../../assets/image/doctor-character-background_1270-84.jpg">
+          </ion-avatar>
+        </ion-col>
+        <ion-col [size]=9 style="display: flex; flex-direction: row; justify-content: flex-start;
+         align-items: center;">
+          <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;
+          text-transform: capitalize;">{{userDetails.doctorName}}</ion-text>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div>
+    <ion-row>
+      <ion-col [size]=3 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <ion-icon *ngIf='woman' style="font-size: 30px;" name="woman"></ion-icon>
+        <ion-icon *ngIf='man' style="font-size: 30px;" name="man"></ion-icon>
+      </ion-col>
+      <ion-radio-group (ionChange)="radio($event)" selected value={{userDetails.doctorGender}} style="display: flex;
+       flex-direction: row; 
+      justify-content: flex-start; align-items: center; width: 70%;">
+      <div *ngIf="male" style="width: 100%;display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;">
+        <ion-radio slot="start" value="M"></ion-radio>
+        <ion-chip style="width: 30%; justify-content: center;">
+          <ion-label style="font-size: 12px; font-family: SF-UI-Text-Bold;">Male</ion-label>
+        </ion-chip>
+      </div>
+      <div *ngIf="female" style="width: 100%;display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;">
+        <ion-radio slot="start" value="F"></ion-radio>
+        <ion-chip style="width: 30%; justify-content: center;">
+          <ion-label style="font-size: 12px; font-family: SF-UI-Text-Bold;">Female</ion-label>
+        </ion-chip>
+      </div>
+      <div *ngIf="!male && !female" style="width: 100%;display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;">
+        <ion-radio slot="start" value="M"></ion-radio>
+        <ion-chip style="width: 30%; justify-content: center;">
+          <ion-label style="font-size: 12px; font-family: SF-UI-Text-Bold;">Male</ion-label>
+        </ion-chip>
+        <ion-radio slot="start" value="F" style="margin-left: 5%;"></ion-radio>
+        <ion-chip style="width: 30%; justify-content: center;">
+          <ion-label style="font-size: 12px; font-family: SF-UI-Text-Bold;">Female</ion-label>
+        </ion-chip>
+      </div>
+      </ion-radio-group>
+    </ion-row>
+  </div>
+  <div>
+    <ion-row>
+      <ion-col [size]=3 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <ion-icon name="call" style="font-size: 30px;"></ion-icon>
+      </ion-col>
+      <ion-col [size]=9 style="display: flex; flex-direction: column; justify-content: flex-start;">
+        <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;">Mobile</ion-text>
+        <ion-text style="font-size: 12px; font-family: SF-UI-Text-Regular;">{{userDetails.doctorMobile}}</ion-text>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div>
+    <ion-row>
+      <ion-col [size]=3 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <ion-icon name="mail" style="font-size: 30px;"></ion-icon>
+      </ion-col>
+      <ion-col [size]=9 style="display: flex; flex-direction: column; justify-content: flex-start;">
+        <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;">Email</ion-text>
+        <ion-text style="font-size: 12px; font-family: SF-UI-Text-Regular;">{{userDetails.emailId}}</ion-text>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf='!addresshide'>
+    <ion-row>
+      <ion-col [size]=3 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <ion-icon name="home" style="font-size: 30px;"></ion-icon>
+      </ion-col>
+      <ion-col [size]=7 style="display: flex; flex-direction: column; justify-content: flex-start;">
+        <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;">Address</ion-text>
+        <ion-text style="font-size: 12px; font-family: SF-UI-Text-Regular;
+        text-transform: capitalize;">{{userDetails.doctorAddress}}</ion-text>
+      </ion-col>
+      <ion-col [size]=2 style="display: flex; flex-direction: column; justify-content: center;" (click)="updateAdd()">
+        <ion-icon name="create" style="font-size: 25px;"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf='addresshide'>
+    <ion-row>
+      <ion-col [size]=3 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <ion-icon name="home" style="font-size: 30px;"></ion-icon>
+      </ion-col>
+      <ion-col [size]=9 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <ion-input type="text" placeholder="Enter Address" style="font-size: 12px; 
+        font-family: SF-UI-Text-Regular;" [(ngModel)]="address"></ion-input>
+        <ion-icon name="checkmark-circle-outline" (click)="updateAddress()"></ion-icon>
+        <ion-icon name="trash" style="margin-left: 5%;" (click)="cancel()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf='!pinhide'>
+    <ion-row>
+      <ion-col [size]=3 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <ion-icon name="location" style="font-size: 30px;"></ion-icon>
+      </ion-col>
+      <ion-col [size]=7 style="display: flex; flex-direction: column; justify-content: flex-start;">
+        <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;">Zip Code</ion-text>
+        <ion-text style="font-size: 12px; font-family: SF-UI-Text-Regular;">{{userDetails.doctorPincode}}</ion-text>
+      </ion-col>
+      <ion-col [size]=2 style="display: flex; flex-direction: column; justify-content: center;">
+        <ion-icon name="create" style="font-size: 25px;" (click)="updateZip()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf='pinhide'> 
+    <ion-row>
+      <ion-col [size]=3 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <ion-icon name="location" style="font-size: 30px;"></ion-icon>
+      </ion-col>
+      <ion-col [size]=9 style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+        <ion-input type="text" placeholder="Enter Zipcode" [(ngModel)]="pincode" style="font-size: 12px;
+         font-family: SF-UI-Text-Regular;"></ion-input>
+        <ion-icon name="checkmark-circle-outline" (click)="updateAddress()"></ion-icon>
+        <ion-icon name="trash" style="margin-left: 5%;" (click)="cancel1()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>  
+</div>
+</ion-content>

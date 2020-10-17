@@ -1,0 +1,165 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col (click)="back()" [size]=2 style="display: flex; flex-direction: row;
+       align-items: center; 
+    justify-content: center;">
+  
+    <ion-icon style="color: white; font-size: 25px;" name="arrow-back-outline"></ion-icon>
+  </ion-col>
+  <ion-col [size]=10 style="display: flex; flex-direction: row; align-items: center;
+   justify-content: flex-start;" >
+    <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px;
+     color: white;">Slot</ion-text>
+  </ion-col>
+</ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div> 
+
+
+    <div style="border-bottom: 1px solid gray;padding-top: 10%;">
+      <ion-row>
+        <ion-col [size]=4 style="display: flex;flex-direction: row;
+        justify-content: center;align-items: center;">
+          <ion-text style="font-family: SF-UI-Text-Regular; 
+          font-size: 14px;">Select Date:</ion-text>
+        </ion-col>
+        <ion-col [size]=8 style="display: flex;flex-direction: row;
+        justify-content: flex-start;align-items: center;">
+             <ion-datetime style="border: 1px solid gray;
+             border-radius: 5px;
+             width: 100%;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;" (ionChange)="selectedDate(date)" 
+              displayFormat="DD/MM/YYYY" [(ngModel)]='date'  placeholder='Select Date'
+              ></ion-datetime>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div>    
+          <ion-row >        
+            <ion-col [size]=4 style="display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;" *ngFor="let item of newArray">
+              <ion-checkbox value='{{item.day}}' (ionChange)="checkbox($event)"
+              color="primary"></ion-checkbox>
+            <ion-chip>
+              <ion-text style="font-family: SF-UI-Text-Regular; 
+              font-size: 12px;">{{item.day}}</ion-text>
+            </ion-chip>
+            </ion-col>
+          </ion-row>
+           
+    </div>
+
+    <div style="border-bottom: 1px solid gray;">
+      <ion-row>
+        <ion-col [size]=4 style="display: flex;flex-direction: row;justify-content: center;
+        align-items: center;">
+          <ion-text style="font-family: SF-UI-Text-Regular; font-size: 14px;">Start Time:</ion-text>
+        </ion-col>
+        <ion-col [size]=8 style="display: flex;flex-direction: row;
+        justify-content: flex-start;align-items: center;">
+
+            <ion-datetime style="border: 1px solid gray;
+            width: 100%;
+            border-radius: 5px;
+            text-align: center;" minuteValues="0,15,30,45,60" placeholder='Start' 
+            displayFormat='hh:mm a' [(ngModel)]='startTime'></ion-datetime>
+
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div style="border-bottom: 1px solid gray;">
+      <ion-row>
+        <ion-col [size]=4 style="display: flex;flex-direction: row;
+        justify-content: center;align-items: center;">
+          <ion-text style="font-family: SF-UI-Text-Regular; font-size: 14px;">End Time:</ion-text>
+        </ion-col>
+        <ion-col [size]=8 style="display: flex;flex-direction: row;
+        justify-content: flex-start;align-items: center;">
+
+            <ion-datetime style="border: 1px solid gray;
+            width: 100%;
+            border-radius: 5px;
+            text-align: center;"  placeholder='End' minuteValues="0,15,30,45,60" 
+            displayFormat='hh:mm a' [(ngModel)]='endTime'></ion-datetime>
+
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div style="border-bottom: 1px solid gray;">
+      <ion-row>
+        <ion-col [size]=4 style="display: flex;flex-direction: row;justify-content: center;
+        align-items: center;">
+          <ion-text style="font-family: SF-UI-Text-Regular; 
+          font-size: 14px;">Slot Interval:</ion-text>
+        </ion-col>
+        <ion-col [size]=8 style="display: flex;flex-direction: 
+        row;justify-content: flex-start;align-items: center;">
+          <ion-radio-group (ionChange)="generateSlot($event)" style="width: 100%;">
+            <ion-row style="display: flex;flex-direction: row;align-items: center;">
+              <ion-radio value='15'></ion-radio>
+              <ion-label style="margin-left: 2%;
+              font-size: 13px;">15 Min</ion-label>
+              <ion-radio style="margin-left: 3%;"value='30'></ion-radio>
+              <ion-label style="margin-left: 2%;
+              font-size: 13px;">30 Min</ion-label>
+              <ion-radio style="margin-left: 3%;" value='45'></ion-radio>
+              <ion-label style="margin-left: 2%;
+              font-size: 13px;">45 Min</ion-label>
+            </ion-row>
+            <ion-row style="display: flex;flex-direction: row;align-items: center;margin-top: 5%">
+              <ion-radio value='60'></ion-radio>
+              <ion-label style="margin-left: 2%;
+              font-size: 13px;">60 Min</ion-label>
+
+            </ion-row>
+          </ion-radio-group>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-row style="padding-top: 5%;width: 100%;" *ngIf="slotSelected">
+
+        <ion-col [size]='4' *ngFor='let item of FinalSlotArray'>
+          <div style="background: #83aae5;padding: 3%;
+            width: 100%;
+            height: 50px;display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;" >
+            <ion-row style="display: flex;
+            flex-direction: column;
+            align-items: center;">
+              <ion-text style="font-family: SF-UI-Text-Bold; 
+              font-size: 14px;">{{item.starttime}}</ion-text>
+
+            </ion-row>
+          </div>
+        
+          </ion-col>
+
+    </ion-row>
+
+
+    <ion-row style="justify-content: center; padding-top: 10%;" (click)="confirm()">
+      <div style="border: 1px solid #1b5a90; width: 90%; display: flex; flex-direction: row; 
+      justify-content: space-evenly; align-items: center; padding: 3%;
+       background: #1b5a90; border-radius: 5px;">
+      <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;
+       color: white;" >Confirm</ion-text>
+    </div>
+  </ion-row>
+  </div>
+
+</ion-content>

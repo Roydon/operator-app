@@ -1,0 +1,7 @@
+{
+  "name": "operator-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

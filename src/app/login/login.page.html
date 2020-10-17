@@ -1,0 +1,32 @@
+<ion-content>
+
+  <ion-row style="padding-top: 15%; justify-content: center;">
+    <img  src="../../assets/image/logo.jpeg"> 
+  </ion-row>
+
+  <ion-row style="justify-content: center; padding-top: 25%;">
+    <div style="width: 90%; border: 1px solid gray; border-radius: 5px; text-align: center;">
+      <ion-input type="text" placeholder="Enter Email" style="font-family: SF-UI-Text-Bold; 
+      font-size: 18px;"
+      placeholder="Enter Email" type="text" [(ngModel)]="email"></ion-input>
+    </div>
+  </ion-row>
+
+  <ion-row style="justify-content: center; padding-top: 5%;">
+    <div style="width: 90%; border: 1px solid gray; border-radius: 5px; text-align: center;">
+      <ion-input type="text" placeholder="Enter Email" style="font-family: SF-UI-Text-Bold;
+       font-size: 18px;"
+      placeholder="Enter password" type="password" [(ngModel)]="password"></ion-input>
+    </div>
+  </ion-row>
+
+  <ion-row style="justify-content: center; padding-top: 5%;" (click)="login()">
+    <div style="border: 1px solid #1b5a90; width: 90%; display: flex; flex-direction: row; 
+    justify-content: space-evenly; align-items: center; padding: 3%; background: #1b5a90;
+     border-radius: 5px;">
+    <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;
+     color: white;" >LOGIN</ion-text>
+  </div>
+</ion-row>
+
+</ion-content>

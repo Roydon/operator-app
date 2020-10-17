@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col (click)="back()" [size]=2 style="display: flex; flex-direction: row; 
+      align-items: center; 
+    justify-content: center;">
+    <ion-icon style="color: white; font-size: 25px;" name="arrow-back-outline"></ion-icon>
+  </ion-col>
+  <ion-col [size]=10 style="display: flex; flex-direction: row; align-items: center; 
+  justify-content: flex-start;" >
+    <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px; 
+    color: white;">Create Appointment</ion-text>
+  </ion-col>
+</ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div>
+    <ion-row style="justify-content: center;padding-top: 10%;">
+      <div style="border: 1px solid gray;border-radius: 5px;padding: 3%;
+      width: 65%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;">
+        <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px;
+        text-transform: capitalize;">Dr {{doctorName}}</ion-text>
+      </div>
+    </ion-row>
+  
+    <ion-row style="justify-content: center;padding-top: 10%;">
+      <div style="border: 1px solid gray;border-radius: 5px;padding: 3%;
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;">
+        <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px;
+        text-transform: capitalize;">{{clinicName}}</ion-text>
+        <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px;
+        text-transform: capitalize;">{{clinicAddress}}</ion-text>
+      </div>
+    </ion-row>
+  
+    <ion-row style="justify-content: center;padding-top: 10%;">
+      <div style="border: 1px solid gray;border-radius: 5px;padding: 3%;
+      width: 65%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;">
+        <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px;
+        text-transform: capitalize;">{{selectedSlot.starttime}}-</ion-text>
+        <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px;
+        text-transform: capitalize;">{{selectedSlot.endTime}}</ion-text>
+      </div>
+    </ion-row>
+  
+    <ion-row style="justify-content: center;padding-top: 10%;">
+      <div style="border: 1px solid gray;border-radius: 5px;padding: 2%;
+      width: 65%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;">
+        <ion-input type='number' [(ngModel)]='mobile' placeholder='Enter Mobile Number' style="font-family: SF-UI-Text-Bold;
+         font-size: 14px;text-align: center;"></ion-input>
+        <ion-icon (click)="search()" style="font-size: 25px;" name="search-outline"></ion-icon>
+      </div>
+    </ion-row>
+  
+    <div *ngIf='button'> 
+      <ion-row style="justify-content: center;padding-top: 10%;">
+        <div style="border: 1px solid gray;border-radius: 5px;padding: 2%;
+        width: 65%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;">
+          <ion-input type='text' [(ngModel)]='firstName' placeholder='Enter First Name' 
+          style="font-family: SF-UI-Text-Bold; font-size: 14px;
+          text-transform: capitalize;text-align: center;"></ion-input>
+        </div>
+      </ion-row>
+      <ion-row style="justify-content: center;padding-top: 10%;">
+        <div style="border: 1px solid gray;border-radius: 5px;padding: 2%;
+        width: 65%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;">
+          <ion-input type='text' [(ngModel)]='middleName' placeholder='Enter Middle Name' 
+          style="font-family: SF-UI-Text-Bold; font-size: 14px;
+          text-transform: capitalize;text-align: center;"></ion-input>
+        </div>
+      </ion-row>
+      <ion-row style="justify-content: center;padding-top: 10%;">
+        <div style="border: 1px solid gray;border-radius: 5px;padding: 2%;
+        width: 65%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;">
+          <ion-input type='text' [(ngModel)]='lastName' placeholder='Enter Last Name' 
+          style="font-family: SF-UI-Text-Bold; font-size: 14px;
+          text-transform: capitalize;text-align: center;"></ion-input>
+        </div>
+      </ion-row>
+  
+      <ion-row style="justify-content: center;padding-top: 10%;">
+        <div style="border: 1px solid gray;border-radius: 5px;
+        width: 65%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;">
+          <ion-datetime displayFormat='DD/MM/YYYY' placeholder='Enter Date of Birth' [(ngModel)]='dob' 
+          style="font-family: SF-UI-Text-Bold; font-size: 14px;
+          text-transform: capitalize;">Enter Date of Birth</ion-datetime>
+        </div>
+      </ion-row>
+
+      <ion-row style="justify-content: center; padding-top: 5%;" (click)="create()">
+        <div style="border: 1px solid #1b5a90; width: 90%; display: flex; flex-direction: row; 
+        justify-content: space-evenly; align-items: center; padding: 3%; background: #1b5a90;
+         border-radius: 5px;">
+        <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;
+         color: white;" >Create Appointment</ion-text>
+      </div>
+      </ion-row>
+
+    </div>
+    
+    
+    </div>
+   
+
+</ion-content>

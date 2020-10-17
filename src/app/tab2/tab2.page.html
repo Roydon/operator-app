@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row style="justify-content: center;">
+      <ion-text style="font-family: SF-UI-Text-Bold; font-size: 14px; color: white;">Settings</ion-text>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div>
+
+  <div style="border-bottom: 1px solid gray;" (click)="goToClinic('Clinic')">
+    <ion-row style="display: flex; flex-direction: row; justify-content: space-between; padding: 5%;">
+      <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;">Clinic</ion-text>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+  </div>
+
+  <div style="border-bottom: 1px solid gray;" (click)="goToProfile()">
+    <ion-row style="display: flex; flex-direction: row; justify-content: space-between; padding: 5%;">
+      <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;">Profile</ion-text>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+  </div>
+
+  <div style="border-bottom: 1px solid gray;">
+    <ion-row style="display: flex; flex-direction: row; justify-content: space-between; padding: 5%;">
+      <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;">Documents</ion-text>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+  </div>
+
+  <div style="border-bottom: 1px solid gray;">
+    <ion-row style="display: flex; flex-direction: row; justify-content: space-between; padding: 5%;">
+      <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;">How to use</ion-text>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+  </div>
+
+  <div style="border-bottom: 1px solid gray;" (click)="logout()">
+    <ion-row style="display: flex; flex-direction: row; justify-content: space-between; padding: 5%;">
+      <ion-text style="font-size: 14px; font-family: SF-UI-Text-Bold;">Logout</ion-text>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+  </div>
+
+</div>
+
+
+</ion-content>
